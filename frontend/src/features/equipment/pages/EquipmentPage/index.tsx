@@ -17,10 +17,15 @@ import {
 } from '../../mocks/equipment.mock'
 import type { Equipment, EquipmentStatus, EquipmentType } from '../../types/equipment'
 import { Container } from './styles'
+import { useNavigate } from 'react-router-dom'
 
 export function EquipmentPage() {
+  const navigate = useNavigate()
   const [messageApi, contextHolder] = message.useMessage()
 
+  function handleViewEquipment(equipment: Equipment) {
+  navigate(`/equipment/${equipment.id}`)
+}
   // Estados dos filtros. Cada campo da área de filtros controla um estado aqui.
   const [searchText, setSearchText] = useState('')
   const [selectedStatus, setSelectedStatus] = useState<EquipmentStatus>()
@@ -109,6 +114,7 @@ export function EquipmentPage() {
           onChangeStatusEquipment={setEquipmentInStatus}
           onEditEquipment={handleEditEquipment}
           onRemoveEquipment={setEquipmentToRemove}
+          onViewEquipment={handleViewEquipment}
         />
 
         <EquipmentFormModal

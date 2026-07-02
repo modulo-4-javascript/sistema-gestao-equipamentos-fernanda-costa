@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 // import { EquipmentDetailsPage } from '../features/equipment/pages/EquipmentDetailsPage'
 import { EquipmentPage } from '../features/equipment/pages/EquipmentPage'
 import { LocationsPage } from '../features/locations/pages/LocationsPage'
+import { EquipmentDetailsPage } from '../features/equipment/pages/EquipmentDetailsPage'
 
 export function AppRoutes() {
   return (
@@ -22,6 +23,8 @@ export function AppRoutes() {
 
       {/* Qualquer rota desconhecida volta para a tela principal para evitar tela em branco. */}
       <Route path="*" element={<Navigate to="/equipment" replace />} />
+
+      <Route path="/equipment/:equipmentId" element={<EquipmentDetailsPage />} />
     </Routes>
   )
 }
